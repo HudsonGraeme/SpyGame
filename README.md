@@ -1,2 +1,2 @@
 # SpyGame
- # # Small project to further my knowledge in C
+ ## Small project to further my knowledge in C
