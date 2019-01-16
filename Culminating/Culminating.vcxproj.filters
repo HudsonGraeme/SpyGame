@@ -29,5 +29,11 @@
     <Text Include="..\Art\WelcomeScreen.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="..\Art\ExitScreen.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Art\InvalidInput.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

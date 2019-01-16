@@ -1,7 +1,9 @@
-/*ICS3U
-Menu Driven Program
+/*
+	ICS3U
 
-The following program is an example of a menu driven program. The program structure selects the functions that match the menu item (choice).*/
+	Spencer Graham
+	01/15/19
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,34 +18,53 @@ void high_scores();
 void help();
 void play_game();
 void exit_screen();
+void invalidInput();
 
 
-int rows = 10, 
-	cols = 10, 
-	games = 3;
+int rows = 10,																		// The number of rows in the game, global variables which are modified in game preferences.
+	cols = 10, 																		// The number of columns, also modified by the user in the preferences
+	games = 3,																		// The number of rounds which are in a game, again can be modified in preferences.
+	WelcomeShown = 0;																// Used to determine if the welcome_screen has been shown already. 
 
 
-static void setColor() {
-	system("COLOR 4E");
+static void setColor() { // Sets the console color.
+	system("COLOR 02");
 }
 
 
 
-void removeChar(char *str, char garbage) {
+void removeSpaces(char *str) {
 
-	char *src, *dst;
-	for (src = dst = str; *src != '\0'; src++) {
-		*dst = *src;
-		if (*dst != garbage) dst++;
+	char *source, *dest;
+	for (source = dest = str; *source != '\0'; source++) {
+		*dest = *source;
+		if (*dest != '\n') dest++; //Skips over the empty spaces in the input
 	}
-	*dst = '\0';
+	*dest = '\0';
+} // This function removes unneccesary newlines which are found in the text files.
+
+int SetCursor(int x, int y) // Sets the cursor position on the output screen.
+{
+
+	COORD location;
+	location.X = x;
+	location.Y = y; // Creates the coordinates at which to move the cursor
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Gets the console's output screen for use in setting the position of the cursor
+
+	if (!SetConsoleCursorPosition(hConsole, location)) // Sets the cursor location and checks if the location is ok
+	{
+		return 1; // Returns a nonzero; failure
+	}
+	return 0; // Retruns a sucess 
 }
+
 void fullscreen()
 {
-	keybd_event(VK_MENU, 0x38, 0, 0);
+	keybd_event(VK_MENU, 0x38, 0, 0); 
 	keybd_event(VK_RETURN, 0x1c, 0, 0);
 	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0);
-	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); // This function emulates menu and return keys being pressed in order to force fullscreen mode.
 }
 void main(void)
 {
@@ -103,24 +124,26 @@ int menu()
 			for (i = 0;i <= 10;i++) {
 				fgets(currStr, 1000, fp);
 				if (strchr(currStr, '\n') != NULL) {
-					removeChar(currStr, '\n');
+					removeSpaces(currStr);
 				}
 				puts(currStr);
 			}
+			printf("\n\n\n");
 			do {
 				FILE *fm = fopen("..\\Art\\MenuOptions.txt", "r");
 				printf("\n\n");
 				for (i = 0;i <= 7;i++) {
 					fgets(currStr, 1000, fm);
 					if (strchr(currStr, '\n') != NULL) {
-						removeChar(currStr, '\n');
+						removeSpaces(currStr);
+						
 					}
 					puts(currStr);
 				}
 				fclose(fm);
 			} while (stop == 1);
 			fclose(fp);
-			while (getchar() != '\n');
+			fflush(stdin);
 			scanf("%d", &choice);
 			system("cls");
 		if (choice < 1 || choice > 6)
@@ -139,7 +162,10 @@ int menu()
 
 void welcome_screen()
 {
-	fullscreen();
+	if (WelcomeShown == 0) {
+		fullscreen();
+		WelcomeShown = 1;
+	}
 	char currStr[1000];
 	int i = 0;
 	system("cls");
@@ -149,7 +175,7 @@ void welcome_screen()
 		for (i = 0;i <= 50;i++) {
 			fgets(currStr, 1000, fm);
 			if (strchr(currStr, '\n') != NULL) {
-				removeChar(currStr, '\n');
+				removeSpaces(currStr);
 			}
 			if (i == 1) {
 				system("cls");
@@ -159,7 +185,8 @@ void welcome_screen()
 		fclose(fm);
 	} while (1 == 0);
 	//while (getchar() != '\n');
-	_getch();
+	fflush(stdin);
+	//_getch();
 	_getch();
 }
 
@@ -222,7 +249,61 @@ void help()
 void exit_screen()
 {
 	system("cls");
-	printf("This function will display the exit screen.\n");
+	char currStr[1000],
+		choice = '\0';
+	
+	int i = 0;
+	FILE *fm = fopen("..\\Art\\ExitScreen.txt", "r");
+	printf("\n\n");
+	for (i = 0; i <= 43; i++) {
+		fgets(currStr, 1000, fm);
+		if (strchr(currStr, '\n') != NULL) {
+			removeSpaces(currStr);
+
+		}
+		puts(currStr);
+	}
+	fclose(fm);
+	while (getchar() != '\n');
+	choice = getchar();
+
+	while (choice != 'n' || choice != 'N' && choice != 'y' || choice != 'Y') {
+		invalidInput();
+		int i = 0;
+		FILE *fm = fopen("..\\Art\\ExitScreen.txt", "r");
+		printf("\n\n");
+		for (i = 0; i <= 43; i++) {
+			fgets(currStr, 1000, fm);
+			if (strchr(currStr, '\n') != NULL) {
+				removeSpaces(currStr);
+
+			}
+			puts(currStr);
+		}
+		fclose(fm);
+		fflush(stdin);
+		choice = getchar();
+	}
+
+	_getch();
+}
+
+void invalidInput() {
+	system("cls");
+	char currStr[1000];
+	int i = 0;
+	FILE *fm = fopen("..\\Art\\InvalidInput.txt", "r");
+	printf("\n\n");
+	for (i = 0; i <= 33; i++) {
+		fgets(currStr, 1000, fm);
+		if (strchr(currStr, '\n') != NULL) {
+			removeSpaces(currStr);
+
+		}
+		puts(currStr);
+	}
+	fclose(fm);
+	fflush(stdin);
 	_getch();
 }
 
@@ -285,6 +366,7 @@ void play_game()
 			}
 
 			if (x == randx && y == randy) {
+				SetConsoleCursorPosition(x, y);
 				printf("win in %d tries", count);
 				win = 1;
 			}
