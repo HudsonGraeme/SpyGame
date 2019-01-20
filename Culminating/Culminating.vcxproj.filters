@@ -35,5 +35,25 @@
     <Text Include="..\Art\InvalidInput.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="..\Art\Preferences.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Art\HelpScreen.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Art\PreferencePanes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Art\HSS.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Art\HelpPanes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Art\Highscores">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

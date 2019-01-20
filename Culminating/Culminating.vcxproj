@@ -143,12 +143,20 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Art\ExitScreen.txt" />
+    <Text Include="..\Art\HelpPanes.txt" />
+    <Text Include="..\Art\HelpScreen.txt" />
+    <Text Include="..\Art\HSS.txt" />
     <Text Include="..\Art\InvalidInput.txt" />
     <Text Include="..\Art\MainMenu.txt">
       <DeploymentContent>true</DeploymentContent>
     </Text>
     <Text Include="..\Art\MenuOptions.txt" />
+    <Text Include="..\Art\PreferencePanes.txt" />
+    <Text Include="..\Art\Preferences.txt" />
     <Text Include="..\Art\WelcomeScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Art\Highscores" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

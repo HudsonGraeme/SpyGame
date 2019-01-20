@@ -1,0 +1,44 @@
+										 _________________________________________
+										|              How to play                |
+										|_________________________________________|
+										|  The objective of the game is to find	  |
+										|  the hidden spy. To uncover a location, |
+										|  simply enter the coordinates (x,y) of  |
+										|  the location you'd like checked and	  |
+										|  it will be revealed. If you find the	  |
+										|    spy, your score will be adjusted	  |
+										|  based on the amount of tries it takes  |
+										|  you to find the spy. By default, the	  |
+										|    grid is 10x10 and there are three	  |
+										|    rounds per game. If you would like	  |
+										|   to quit the game at any time, simply  |
+										|      type 0,0 into the input box.       |
+										|_________________________________________|
+										 _________________________________________
+										|               Preferences               |
+										|_________________________________________|
+										|   There are three seperate preferences  |
+										|   for this game.                        |
+										|   1. Columns/Rows - Allows one to tweak |
+										|   the difficulty via modifying the grid |
+										|   size.                                 |
+										|   2. Number of Rounds	- Allows one to   |
+										|   Tweak the number of rounds per game.  |
+										|   3. Extreme mode - Changes the game    |
+										|   entirely. There are now nine spies    |
+										|   who roam around the board as a group. |
+										|   Every time you guess, the spies move. |
+										|                                         |
+										|_________________________________________|
+										 _________________________________________
+										|               Navigation                |
+										|_________________________________________|
+										|    To get from the main menu to any     |
+										|    destination, simply enter the        |
+										|    desired number and press enter.      |
+										|    If you would like to return to the	  |
+										|    main menu from the game, simply      |
+										|    enter 0,0 into the game. All other	  |
+										|    navigation areas work the same as	  |
+										|    the main menu.                       |
+										|_________________________________________|

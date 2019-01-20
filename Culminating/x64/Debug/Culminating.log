@@ -1,1 +1,11 @@
-﻿  Culminating.vcxproj -> C:\Users\Null\Downloads\SpyGame-master\SpyGame-master\x64\Debug\Culminating.exe
+﻿  main.c
+c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(56): warning C4028: formal parameter 1 different from declaration
+c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(56): warning C4029: declared formal parameter list different from definition
+c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(56): warning C4273: 'SetCursor': inconsistent dll linkage
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winuser.h(9140): note: see previous definition of 'SetCursor'
+c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(66): warning C4047: 'return': 'HCURSOR' differs in levels of indirection from 'int'
+c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(647): warning C4013: 'time' undefined; assuming extern returning int
+c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(688): warning C4474: 'printf' : too many arguments passed for format string
+  c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(688): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+c:\users\null\downloads\spygame-master\spygame-master\culminating\main.c(793): warning C4101: 'tempStr': unreferenced local variable
+  Culminating.vcxproj -> C:\Users\Null\Downloads\SpyGame-master\SpyGame-master\x64\Debug\Culminating.exe
